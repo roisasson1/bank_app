@@ -12,6 +12,11 @@ RUN npm run build
 
 FROM nginx:alpine
 
+RUN apk update && \
+    apk add --no-cache ca-certificates && \
+    update-ca-certificates && \
+    rm -rf /var/cache/apk/*
+
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
