@@ -53,7 +53,7 @@ const TransactionPopup: React.FC<TransactionPopupProps> = ({ onClose, senderEmai
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/transactions/send`, {
+      const response = await fetch(`/api/transactions/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

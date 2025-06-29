@@ -32,7 +32,7 @@ const PhoneValidation: React.FC<PhoneValidationProps> = ({
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/auth/sign-up/validate`, {
+      const response = await fetch(`/api/auth/sign-up/validate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

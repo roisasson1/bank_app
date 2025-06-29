@@ -41,7 +41,7 @@ const SignUp: React.FC<SignupProps> = ({ onClose, onSignUpSuccess }) => {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/auth/sign-up`, {
+      const response = await fetch(`/api/auth/sign-up`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

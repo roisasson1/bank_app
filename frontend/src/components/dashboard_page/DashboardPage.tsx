@@ -46,7 +46,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ currentUserEmail, current
         }
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/balance`, {
+            const response = await fetch(`/api/balance`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ currentUserEmail, current
         }
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/transactions?limit=5`, {
+            const response = await fetch(`/api/transactions?limit=5`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

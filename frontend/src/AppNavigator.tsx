@@ -29,7 +29,7 @@ const AppNavigator: React.FC<AppNavigatorProps> = ({ loggedInUserEmail, loggedIn
     const token = localStorage.getItem('accessToken');
     if (token) {
         try {
-            await fetch(`${import.meta.env.VITE_API_DEV_URL}/api/auth/logout`, {
+            await fetch(`/api/auth/logout`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
