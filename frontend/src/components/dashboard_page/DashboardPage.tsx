@@ -4,12 +4,12 @@ import Header from './Header';
 import TransactionPopup from './TransactionPopup';
 import { io } from 'socket.io-client';
 
-const socket = io(`${import.meta.env.VITE_API_DEV_URL}`, {
-    transports: ['websocket', 'polling'],
-    withCredentials: true,
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000,
+const socket = io({
+  transports: ['websocket', 'polling'],
+  withCredentials: true,
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000,
 });
 
 interface TransactionData {
