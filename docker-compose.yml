@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGO_URI=${MONGO_URI}
+      - REDIS_URL=${REDIS_URL}
+      - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
+      - TWILIO_PHONE_NUMBER=${TWILIO_PHONE_NUMBER}
+      - USE_TWILIO=${USE_TWILIO}
+      - WEBSITE_DEV_URL=${WEBSITE_DEV_URL}
+      - PORT=3000
+    depends_on:
+      - mongo
+      - redis
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    environment:
+      - VITE_API_DEV_URL=http://backend:3000
+    depends_on:
+      - backend
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mongo-data:
+  redis-data:
